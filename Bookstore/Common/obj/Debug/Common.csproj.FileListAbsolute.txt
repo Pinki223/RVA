@@ -1,0 +1,12 @@
+C:\Users\Korisnik\Documents\GitHub\RVA\Bookstore\Common\bin\Debug\Common.dll
+C:\Users\Korisnik\Documents\GitHub\RVA\Bookstore\Common\bin\Debug\Common.pdb
+C:\Users\Korisnik\Documents\GitHub\RVA\Bookstore\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+C:\Users\Korisnik\Documents\GitHub\RVA\Bookstore\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\Korisnik\Documents\GitHub\RVA\Bookstore\Common\obj\Debug\Common.dll
+C:\Users\Korisnik\Documents\GitHub\RVA\Bookstore\Common\obj\Debug\Common.pdb
+C:\rva\RVA\Bookstore\Common\bin\Debug\Common.dll
+C:\rva\RVA\Bookstore\Common\bin\Debug\Common.pdb
+C:\rva\RVA\Bookstore\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+C:\rva\RVA\Bookstore\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\rva\RVA\Bookstore\Common\obj\Debug\Common.dll
+C:\rva\RVA\Bookstore\Common\obj\Debug\Common.pdb

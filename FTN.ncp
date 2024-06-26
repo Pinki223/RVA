@@ -1,0 +1,703 @@
+<Project>
+  <Name>FTN</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Biblioteka</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Book</Name>
+        <Access>Public</Access>
+        <Location left="393" top="273" />
+        <Size width="162" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public int BookId { get; set; }</Member>
+        <Member type="Property">public int AuthorId { get; set; }</Member>
+        <Member type="Property">public Author Author { get; set; }</Member>
+        <Member type="Property">public string Username { get; set; }</Member>
+        <Member type="Property">public Member Member { get; set; }</Member>
+        <Member type="Property">public string Title { get; set; }</Member>
+        <Member type="Property">public int PublishYear { get; set; }</Member>
+        <Member type="Method">public ICloneable Clone()</Member>
+        <Member type="Property">public DateTime LastModified { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Autor</Name>
+        <Access>Public</Access>
+        <Location left="707" top="273" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public int AuthorId { get; set; }</Member>
+        <Member type="Property">public string ShortDesc { get; set; }</Member>
+        <Member type="Property">public string FirstName { get; set; }</Member>
+        <Member type="Property">public string LastName { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Member</Name>
+        <Access>Public</Access>
+        <Location left="70" top="273" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Username { get; set; }</Member>
+        <Member type="Property">public string Password { get; set; }</Member>
+        <Member type="Property">public string FirstName { get; set; }</Member>
+        <Member type="Property">public string LastName { get; set; }</Member>
+        <Member type="Property">public bool IsAdmin { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BookstoreService</Name>
+        <Access>Public</Access>
+        <Location left="2057" top="564" />
+        <Size width="316" height="366" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static UserService userService</Member>
+        <Member type="Field">private Logger logger</Member>
+        <Member type="Constructor">public BookstoreService()</Member>
+        <Member type="Method">public Dictionary&lt;int, Book&gt; GetBooks()</Member>
+        <Member type="Method">public bool CreateBook(string title, int publishmentYear, int authorId, string token)</Member>
+        <Member type="Method">public bool DeleteBook(Book book, string token)</Member>
+        <Member type="Method">public void CloneBook(Book book, string token)</Member>
+        <Member type="Method">public bool EditBook(Book book, string token)</Member>
+        <Member type="Method">public bool LeaseBook(Book book, string token)</Member>
+        <Member type="Method">public bool ReturnBook(Book book, string token)</Member>
+        <Member type="Method">public Author CreateAuthor(string firstName, string lastName, string shortDesc, string token)</Member>
+        <Member type="Method">public List&lt;Author&gt; GetAuthors()</Member>
+        <Member type="Method">public string LogIn(string username, string password)</Member>
+        <Member type="Method">public void LogOut(string token)</Member>
+        <Member type="Method">public bool CreateUser(string firstName, string lastName, string username, string password, bool admin, string token)</Member>
+        <Member type="Method">public bool EditMemberInfo(string firstName, string lastName, string token)</Member>
+        <Member type="Method">public Member GetMemberInfo(string token)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IBookStoreService</Name>
+        <Access>Public</Access>
+        <Location left="1267" top="564" />
+        <Size width="316" height="299" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">bool CreateBook(string title, int publishmentYear, int authorId, string token)</Member>
+        <Member type="Method">Author CreateAuthor(string firstName, string lastName, string shortDesc, string token)</Member>
+        <Member type="Method">bool CreateUser(string firstName, string lastName, string username, string password, bool admin, string token)</Member>
+        <Member type="Method">bool DeleteBook(Book book, string token)</Member>
+        <Member type="Method">void CloneBook(Book book, string token)</Member>
+        <Member type="Method">bool EditBook(Book book, string token)</Member>
+        <Member type="Method">Dictionary&lt;int, Book&gt; GetBooks()</Member>
+        <Member type="Method">Member GetMemberInfo(string token)</Member>
+        <Member type="Method">bool EditMemberInfo(string firstName, string lastName, string token)</Member>
+        <Member type="Method">string LogIn(string username, string password)</Member>
+        <Member type="Method">void LogOut(string token)</Member>
+        <Member type="Method">bool LeaseBook(Book book, string token)</Member>
+        <Member type="Method">bool ReturnBook(Book book, string token)</Member>
+        <Member type="Method">List&lt;Author&gt; GetAuthors()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>DbContext</Name>
+        <Access>Public</Access>
+        <Location left="2271" top="275" />
+        <Size width="162" height="78" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BookstoreDbContext</Name>
+        <Access>Public</Access>
+        <Location left="2057" top="275" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public DbSet&lt;Author&gt; Authors { get; set; }</Member>
+        <Member type="Property">public DbSet&lt;Member&gt; Members { get; set; }</Member>
+        <Member type="Property">public DbSet&lt;Book&gt; Books { get; set; }</Member>
+        <Member type="Method">protected override void OnModelCreating(DbModelBuilder dbModelBuilder)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserService</Name>
+        <Access>Public</Access>
+        <Location left="2417" top="564" />
+        <Size width="162" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static UserService instance</Member>
+        <Member type="Field">Dictionary&lt;string, Member&gt; LoggedInMembers</Member>
+        <Member type="Method">private string hashToken()</Member>
+        <Member type="Constructor">private UserService()</Member>
+        <Member type="Method">public static UserService GetInstance()</Member>
+        <Member type="Method">public Member GetLoggedInUser(string token)</Member>
+        <Member type="Method">public bool IsMemberLoggedIn(string token)</Member>
+        <Member type="Method">public string LoginUser(string username, string password)</Member>
+        <Member type="Method">public void LogoutUser()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Command</Name>
+        <Access>Public</Access>
+        <Location left="57" top="678" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Action callback</Member>
+        <Member type="Field">Func&lt;bool&gt; canExecuteMethod</Member>
+        <Member type="Event">public event EventHandler CanExecuteChanged</Member>
+        <Member type="Constructor">public Command(Action callbackFunc, Func&lt;bool&gt; canExecute = null)</Member>
+        <Member type="Method">public void RaiseCanExecuteChanged()</Member>
+        <Member type="Method">public bool CanExecute(object parameter)</Member>
+        <Member type="Method">public void Execute(object parameter)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Command&lt;T&gt;</Name>
+        <Access>Public</Access>
+        <Location left="281" top="678" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Action&lt;T&gt; callback</Member>
+        <Member type="Field">Func&lt;bool&gt; canExecuteMethod</Member>
+        <Member type="Event">public event EventHandler CanExecuteChanged</Member>
+        <Member type="Constructor">public Command(Action&lt;T&gt; callbackFunc, Func&lt;bool&gt; canExecute = null)</Member>
+        <Member type="Method">public void RaiseCanExecuteChanged()</Member>
+        <Member type="Method">public bool CanExecute(object parameter)</Member>
+        <Member type="Method">public void Execute(object parameter)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>RevertableCommand</Name>
+        <Access>Public</Access>
+        <Location left="57" top="941" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Action revert</Member>
+        <Member type="Constructor">public RevertableCommand(Action executeFunc, Action revertFunc)</Member>
+        <Member type="Method">public void Revert()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ICommand</Name>
+        <Access>Public</Access>
+        <Location left="168" top="564" />
+        <Size width="162" height="64" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>Session</Name>
+        <Access>Public</Access>
+        <Location left="991" top="564" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public IBookstoreService BookstoreService { get; private set; }</Member>
+        <Member type="Constructor">public Session()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SessionService</Name>
+        <Access>Public</Access>
+        <Location left="707" top="564" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static SessionService instance</Member>
+        <Member type="Property">public Session Session { get; set; }</Member>
+        <Member type="Property">public string Token { get; set; }</Member>
+        <Member type="Constructor">private SessionService()</Member>
+        <Member type="Property">public static SessionService Instance { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>LogLevel</Name>
+        <Access>Public</Access>
+        <Location left="1344" top="273" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Value>DEBUG</Value>
+        <Value>INFO</Value>
+        <Value>WARN</Value>
+        <Value>ERROR</Value>
+        <Value>FATAL</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>Logger</Name>
+        <Access>Public</Access>
+        <Location left="1344" top="940" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string path</Member>
+        <Member type="Event">public event Action OnMessageLogged</Member>
+        <Member type="Constructor">public Logger(string filename)</Member>
+        <Member type="Method">public void Log(string message, LogLevel logLevel, string username)</Member>
+        <Member type="Event">public event Action OnMessageLogged</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ViewModelBase</Name>
+        <Access>Public</Access>
+        <Location left="1047" top="1429" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected static Logger ClientLogger</Member>
+        <Member type="Constructor">public ViewModelBase()</Member>
+        <Member type="Method">protected virtual void OnPropertyChanged(string propertName)</Member>
+        <Member type="Event">public event PropertyChangedEventHandler PropertyChanged</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>INotifyPropertyChanged</Name>
+        <Access>Public</Access>
+        <Location left="1047" top="1261" />
+        <Size width="162" height="61" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>LoginViewmModel</Name>
+        <Access>Public</Access>
+        <Location left="777" top="1731" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string errorText</Member>
+        <Member type="Field">private bool isLoggedIn</Member>
+        <Member type="Property">public bool IsLoggedIn { get; set; }</Member>
+        <Member type="Property">public string Username { get; set; }</Member>
+        <Member type="Property">public Command&lt;object&gt; LoginCommand { get; set; }</Member>
+        <Member type="Property">public string ErrorText { get; set; }</Member>
+        <Member type="Constructor">public LoginViewmModel()</Member>
+        <Member type="Method">protected void Login(object parameter)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BookViewModel</Name>
+        <Access>Public</Access>
+        <Location left="957" top="1731" />
+        <Size width="162" height="689" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ActionHistory history</Member>
+        <Member type="Field">private Book selectedBook</Member>
+        <Member type="Field">private List&lt;Book&gt; books</Member>
+        <Member type="Field">private bool isAdmin = false</Member>
+        <Member type="Property">public Command&lt;Window&gt; NewBookCommand { get; set; }</Member>
+        <Member type="Property">public Book SelectedBook { get; set; }</Member>
+        <Member type="Method">private void NewAuthor()</Member>
+        <Member type="Method">private void EditBook()</Member>
+        <Member type="Method">private void DuplicateBook()</Member>
+        <Member type="Method">private bool CanDuplicate()</Member>
+        <Member type="Method">private void RefreshList()</Member>
+        <Member type="Method">private void LeaseBook()</Member>
+        <Member type="Method">private bool CanLease()</Member>
+        <Member type="Method">private bool IsAdmin()</Member>
+        <Member type="Method">private void ReturnBook()</Member>
+        <Member type="Method">private bool CanReturn()</Member>
+        <Member type="Method">private void FilterBooks()</Member>
+        <Member type="Method">private void Undo()</Member>
+        <Member type="Method">private void Redo()</Member>
+        <Member type="Method">private void NewBook()</Member>
+        <Member type="Constructor">public BookViewModel()</Member>
+        <Member type="Method">private void NewBook(Window window)</Member>
+        <Member type="Method">private bool ValidateBook()</Member>
+        <Member type="Property">public ICollectionView BookList { get; set; }</Member>
+        <Member type="Property">public List&lt;Author&gt; AuthorList { get; set; }</Member>
+        <Member type="Property">public string BookNameTextBox { get; set; }</Member>
+        <Member type="Property">public string AuthorTextBox { get; set; }</Member>
+        <Member type="Property">public Command NewAuthorCommand { get; set; }</Member>
+        <Member type="Property">public Command EditBookCommand { get; set; }</Member>
+        <Member type="Property">public Command DuplicateCommand { get; set; }</Member>
+        <Member type="Property">public Command DeleteCommand { get; set; }</Member>
+        <Member type="Property">public Command RefreshCommand { get; set; }</Member>
+        <Member type="Property">public Command LeaseCommand { get; set; }</Member>
+        <Member type="Property">public Command SearchCommand { get; set; }</Member>
+        <Member type="Property">public Command UndoCommand { get; set; }</Member>
+        <Member type="Property">public Command RedoCommand { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AccountViewModel</Name>
+        <Access>Public</Access>
+        <Location left="1140" top="1731" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string FirstNameTextBox { get; set; }</Member>
+        <Member type="Property">public string LastNameTextBox { get; set; }</Member>
+        <Member type="Property">public Command SaveCommand { get; set; }</Member>
+        <Member type="Constructor">public AccountViewModel()</Member>
+        <Member type="Method">private void SaveAccountChanges()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AdminViewModel</Name>
+        <Access>Public</Access>
+        <Location left="1332" top="1731" />
+        <Size width="162" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string errorText</Member>
+        <Member type="Constructor">public AdminViewModel()</Member>
+        <Member type="Property">public string UsernameTextBox { get; set; }</Member>
+        <Member type="Property">public string ErrorText { get; set; }</Member>
+        <Member type="Method">private void CreateUser(object param)</Member>
+        <Member type="Method">private bool ValidateUserData(string password)</Member>
+        <Member type="Property">public string FirstNameTextBox { get; set; }</Member>
+        <Member type="Property">public string LastNameTextBox { get; set; }</Member>
+        <Member type="Property">public bool IsAdminCheckBox { get; set; }</Member>
+        <Member type="Property">public Command&lt;object&gt; CreateUserCommand { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LogViewModel</Name>
+        <Access>Public</Access>
+        <Location left="1526" top="1731" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Member user</Member>
+        <Member type="Constructor">public LogViewModel()</Member>
+        <Member type="Method">private void RefreshTable()</Member>
+        <Member type="Property">public ObservableCollection&lt;LogEntry&gt; Entries { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LogEntry</Name>
+        <Access>Public</Access>
+        <Location left="1746" top="1731" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public LogLevel Level { get; set; }</Member>
+        <Member type="Property">public string Time { get; set; }</Member>
+        <Member type="Property">public string Message { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ActionHistory</Name>
+        <Access>Public</Access>
+        <Location left="393" top="941" />
+        <Size width="162" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private List&lt;RevertableCommand&gt; actions</Member>
+        <Member type="Property">public int HistoryPosition { get; private set; }</Member>
+        <Member type="Constructor">public ActionHistory()</Member>
+        <Member type="Method">public void AddAndExecute(RevertableCommand action)</Member>
+        <Member type="Method">public void Undo()</Member>
+        <Member type="Method">public bool CanUndo()</Member>
+        <Member type="Method">public void Redo()</Member>
+        <Member type="Method">public bool CanRedo()</Member>
+        <Member type="Property">public RevertableCommand this[int i] { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IDisposable</Name>
+        <Access>Public</Access>
+        <Location left="211" top="1291" />
+        <Size width="162" height="61" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>WaitCursor</Name>
+        <Access>Public</Access>
+        <Location left="211" top="1397" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public WaitCursor()</Member>
+        <Member type="Method">public void Dispose()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>NewAuthorViewModel</Name>
+        <Access>Public</Access>
+        <Location left="591" top="1731" />
+        <Size width="162" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string firstName</Member>
+        <Member type="Field">private string lastName</Member>
+        <Member type="Field">private string shortDesc</Member>
+        <Member type="Field">private string errorMessage</Member>
+        <Member type="Property">public string FirstName { get; set; }</Member>
+        <Member type="Property">public string LastName { get; set; }</Member>
+        <Member type="Property">public string ShortDesc { get; set; }</Member>
+        <Member type="Property">public string ErrorMessage { get; set; }</Member>
+        <Member type="Property">public Command&lt;Window&gt; NewAuthorCommand { get; set; }</Member>
+        <Member type="Constructor">public NewAuthorViewModel()</Member>
+        <Member type="Method">public void NewAuthor(Window window)</Member>
+        <Member type="Method">public bool ValidateAuthor()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>NewBookViewModel</Name>
+        <Access>Public</Access>
+        <Location left="402" top="1731" />
+        <Size width="162" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private string bookName</Member>
+        <Member type="Field">private string publicationYear</Member>
+        <Member type="Field">private string errorMessage</Member>
+        <Member type="Field">private ICollectionView authorList</Member>
+        <Member type="Field">private Author selectedAuthor</Member>
+        <Member type="Property">public string BookName { get; set; }</Member>
+        <Member type="Property">public string PublicationYear { get; set; }</Member>
+        <Member type="Property">public string ErrorMessage { get; set; }</Member>
+        <Member type="Property">public ICollectionView AuthorList { get; set; }</Member>
+        <Member type="Property">public Author SelectedAuthor { get; set; }</Member>
+        <Member type="Property">public Command&lt;Window&gt; NewBookCommand { get; set; }</Member>
+        <Member type="Constructor">public NewBookViewModel()</Member>
+        <Member type="Constructor">public NewBookViewModel(ICollectionView authors)</Member>
+        <Member type="Method">private void NewBook(Window window)</Member>
+        <Member type="Method">private bool ValidateBook()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ICloneable</Name>
+        <Access>Public</Access>
+        <Location left="396" top="5" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">ICloneable Clone()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IBooks</Name>
+        <Access>Public</Access>
+        <Location left="1798" top="425" />
+        <Size width="162" height="188" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">Dictionary&lt;int, Book&gt; GetBooks()</Member>
+        <Member type="Method">bool CreateBook(string title, int publishmentYear, int authorId, string token)</Member>
+        <Member type="Method">bool DeleteBook(Book book, string token)</Member>
+        <Member type="Method">void CloneBook(Book book, string token)</Member>
+        <Member type="Method">bool EditBook(Book book, string token)</Member>
+        <Member type="Method">bool LeaseBook(Book book, string token)</Member>
+        <Member type="Method">bool ReturnBook(Book book, string token)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IAuthor</Name>
+        <Access>Public</Access>
+        <Location left="1798" top="638" />
+        <Size width="162" height="126" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void NewMethod()</Member>
+        <Member type="Method">Author CreateAuthor(string firstName, string lastName, string shortDesc, string token)</Member>
+        <Member type="Method">List&lt;Author&gt; GetAuthors()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUser</Name>
+        <Access>Public</Access>
+        <Location left="1798" top="791" />
+        <Size width="162" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">string LogIn(string username, string password)</Member>
+        <Member type="Method">void LogOut(string token)</Member>
+        <Member type="Method">bool CreateUser(string firstName, string lastName, string username, string password, bool admin, string token)</Member>
+        <Member type="Method">bool EditMemberInfo(string firstName, string lastName, string token)</Member>
+        <Member type="Method">Member GetMemberInfo(string token)</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="1" second="0">
+        <Label>wrote</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+        <StartRole>Author</StartRole>
+        <EndRole>Book</EndRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="0">
+        <Label>rents</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+        <StartRole>Member</StartRole>
+        <EndRole>Books</EndRole>
+        <StartMultiplicity>0..1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="3" second="7">
+        <Label>uses</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartRole>BookstoreServiceInstance</StartRole>
+        <EndRole>userService</EndRole>
+        <StartMultiplicity>1..*</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="10" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>136</X>
+          <Y>921</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="9" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="8" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>141</X>
+          <Y>638</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="12" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="13" second="12">
+        <Label>manages</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <EndRole>Session</EndRole>
+        <EndMultiplicity>0..1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="15">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2214</X>
+          <Y>1042</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="16" second="17">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="18" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="19" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="20" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="21" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="22" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="22" second="23">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="24" second="10">
+        <Label>KeepsTrack</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+        <StartRole>ActionHistory</StartRole>
+        <EndRole>actions</EndRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="26" second="25">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="27" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="28" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="16" second="15">
+        <Label>uses</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1291</X>
+          <Y>1488</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+        <EndRole>ClientLogger</EndRole>
+        <StartMultiplicity>0..*</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="19" second="24">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>994</X>
+          <Y>1696</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+        <EndRole>history</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="19" second="26">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="0" second="29">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="3" second="30">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="30">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="3" second="31">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="31">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="3" second="32">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="32">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="3" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2171</X>
+          <Y>1001</Y>
+        </BendPoint>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
